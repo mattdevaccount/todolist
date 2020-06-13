@@ -158,24 +158,16 @@ $(document).ready(function() {
            $(`ul`).append(`<li>` + $(this).val() + `</li>`);
         }
     });
-  
-  /*
-  $(`li`).click(function(){
-    alert('test');
-    $(this).css('text', 'red');
-  }); */
 
-  $('li').on('click' , function () {
-    alert('test');
-    $(this).css('color', 'red');
+  $('ul').on('click', 'li', function () {
+    $(this).addClass('clickedItem');
 });
 
-/*
   $(function(){
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
+    $('ul li').sortable();
+    $('ul li').disableSelection();
   })
-*/
+
 });
 </script>
 </body>
