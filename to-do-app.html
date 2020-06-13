@@ -65,7 +65,7 @@
       font-weight: 200;
       line-height: 2.1;
       color: inherit;
-      background-color: #eee;
+      background-color: lightblue;
     }
 
     main h1 {
@@ -127,6 +127,16 @@
       text-decoration: line-through;
     }
 
+    .firstList {
+      display: inline-block;
+      width: 50%;
+    }
+    
+    .completedList{
+      display: inline-block;
+      vertical-align: top;
+    }
+
   </style>
 </head>
 <body>
@@ -139,12 +149,19 @@
     </div>
 
     <form>
-      <input class="form-control" type="text" placeholder="Add an item...">
+      <input class="form-control" type="text" placeholder="What do we need this week...?">
     </form>
 
-    <ul>
+    <ul class='firstList'>
+      <h4>Things We Need!</h4>
       <!-- To do items get added dynamically here -->
     </ul>
+
+    <ul class='completedList'>
+      <h4>Done and Done!</h2>
+      <!-- Completed items -->
+    </ul>
+
   </div>
 </main>
 
@@ -155,18 +172,27 @@ $(document).ready(function() {
   $(`.form-control`).keypress(function(e) {
         if (e.keyCode == 13) {
            e.preventDefault();
-           $(`ul`).append(`<li>` + $(this).val() + `</li>`);
+           $(`ul.firstList`).append(`<li>` + $(this).val() + `</li>`);
+           $('.form-control').val('');
         }
-    });
+    
+        if ($('.form-control').val === " ") {
+        e.preventDefault();
+        alert("Please enter an item")
+      }
+});
 
   $('ul').on('click', 'li', function () {
     $(this).addClass('clickedItem');
-});
+    $(this).appendTo('ul.completedList')
+  });
 
   $(function(){
     $('ul li').sortable();
     $('ul li').disableSelection();
   })
+
+  
 
 });
 </script>
