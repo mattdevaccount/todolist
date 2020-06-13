@@ -16,6 +16,7 @@
     body {
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
       color: #63707E;
+      background-color: #C8DAD3;
     }
 
     h1 {
@@ -66,7 +67,6 @@
       font-weight: 200;
       line-height: 2.1;
       color: inherit;
-      background-color: #C8DAD3;
     }
 
     main h1 {
@@ -141,11 +141,25 @@
       word-wrap: break-word;
     }
 
-/*
-  .sortable { 
-    list-style-type: none; margin: 0; padding: 0;
+    li {
+      background: linear-gradient(to left, #F2F6F5, #F2F6F5);
+      background-repeat: no-repeat;
+      background-size: 0 100%;
+      transition: background-size 1s 0s;
     }
-*/
+
+    li:hover {
+      background-size: 100% 100%;
+    }
+
+    footer {
+      position: relative;
+      text-align: center;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      font-size: 15px;
+    }
 
   </style>
 </head>
@@ -163,7 +177,7 @@
     </form>
 
     <ul class='firstList sortable'>
-      <h4>To Be Completed</h4>
+      <h4>To Be Completed!</h4>
       <!-- To do items get added dynamically here -->
     </ul>
 
@@ -173,9 +187,14 @@
     </ul>
 
   </div>
+
+  <footer>
+    <p>Click to move item from To Be Completed, to Done and Done! </br>Double click from the "Done and Done" list to delete the item!</p>
+  </footer>
 </main>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 // INSERT CODE HERE
 $(document).ready(function() {
@@ -198,16 +217,18 @@ $(document).ready(function() {
 
   $('ul').on('click', 'li', function () {
     $(this).addClass('clickedItem');
-    $(this).appendTo('ul.completedList')
+    $(this).appendTo('ul.completedList');
   });
-
-/*
+  
+  $('ul').on('dblclick', 'li', function(){
+    $(this).remove();
+  })
+  
   $(function(){
     $('.sortable').sortable();
-    $('.sortable').disableSelection();
-  })
-*/
-  
+    $('.sortable').sortable();
+  });
+
 
 });
 </script>
