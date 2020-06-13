@@ -189,7 +189,7 @@
   </div>
 
   <footer>
-    <p>Click to move item from To Be Completed, to Done and Done! </br>Double click from the "Done and Done" list to delete the item!</p>
+    <p>Click to move item from "To Be Completed", to "Done and Done!" </br>Double click from the "Done and Done" list to delete the item!</p>
   </footer>
 </main>
 
@@ -218,7 +218,13 @@ $(document).ready(function() {
   $('ul').on('click', 'li', function () {
     $(this).addClass('clickedItem');
     $(this).appendTo('ul.completedList');
+
+      if ($('ul').hasClass('clickedItem')) {
+      $(this).removeClass('clickedItem');
+      $(this).appendTo('ul.firstList');
+    }
   });
+
   
   $('ul').on('dblclick', 'li', function(){
     $(this).remove();
