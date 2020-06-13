@@ -223,14 +223,13 @@ $(document).ready(function() {
     $(this).addClass('clickedItem');
     $(this).appendTo('ul.completedList');
 
-//attempting to allow moving from completed list back to the to-do list
+/*attempting to allow moving from completed list back to the to-do list
       if ($('ul').hasClass('clickedItem')) {
       $(this).removeClass('clickedItem');
       $(this).appendTo('ul.firstList');
-    }
+    }*/
   });
 
-  
   $('ul').on('dblclick', 'li', function(){
     $(this).remove();
   })
@@ -238,7 +237,7 @@ $(document).ready(function() {
 //can sort things top to bottom, but still buggy
   $(function(){
     $('.sortable').sortable();
-    $('.sortable').sortable();
+    $('.sortable').disableSelection();
   });
 
 
