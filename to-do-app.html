@@ -15,6 +15,7 @@
 
     body {
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      color: #63707E;
     }
 
     h1 {
@@ -65,7 +66,7 @@
       font-weight: 200;
       line-height: 2.1;
       color: inherit;
-      background-color: lightblue;
+      background-color: #C8DAD3;
     }
 
     main h1 {
@@ -83,7 +84,7 @@
     .page-header {
       padding-bottom: 10px;
       margin: 40px 0 20px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #F2F6F5;
     }
 
     input {
@@ -102,8 +103,8 @@
       font-size: 14px;
       line-height: 1.4;
       color: #555;
-      background-color: #fff;
-      border: 1px solid #ccc;
+      background-color: #F2F6F5;
+      border: 1px solid #F2F6F5;
       border-radius: 4px;
       box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
       transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -123,19 +124,28 @@
     }  
 
     .clickedItem {
-      color: grey;
+      color: #93B5B3;
       text-decoration: line-through;
     }
 
     .firstList {
       display: inline-block;
-      width: 50%;
+      width: 54%;
+      word-wrap: break-word;
     }
-    
+
     .completedList{
       display: inline-block;
       vertical-align: top;
+      width: 45%;
+      word-wrap: break-word;
     }
+
+/*
+  .sortable { 
+    list-style-type: none; margin: 0; padding: 0;
+    }
+*/
 
   </style>
 </head>
@@ -145,19 +155,19 @@
   <div class="container">
     
     <div class="page-header"> 
-      <h1>Our List!</h1>
+      <h1>~Things We Gotta Do~</h1>
     </div>
 
     <form>
-      <input class="form-control" type="text" placeholder="What do we need this week...?">
+      <input class="form-control" type="text" placeholder="What's needed?">
     </form>
 
-    <ul class='firstList'>
-      <h4>Things We Need!</h4>
+    <ul class='firstList sortable'>
+      <h4>To Be Completed</h4>
       <!-- To do items get added dynamically here -->
     </ul>
 
-    <ul class='completedList'>
+    <ul class='completedList sortable'>
       <h4>Done and Done!</h2>
       <!-- Completed items -->
     </ul>
@@ -169,7 +179,11 @@
 <script>
 // INSERT CODE HERE
 $(document).ready(function() {
+
+  $('.form-control').focus();
+  
   $(`.form-control`).keypress(function(e) {
+
         if (e.keyCode == 13) {
            e.preventDefault();
            $(`ul.firstList`).append(`<li>` + $(this).val() + `</li>`);
@@ -187,11 +201,12 @@ $(document).ready(function() {
     $(this).appendTo('ul.completedList')
   });
 
+/*
   $(function(){
-    $('ul li').sortable();
-    $('ul li').disableSelection();
+    $('.sortable').sortable();
+    $('.sortable').disableSelection();
   })
-
+*/
   
 
 });
