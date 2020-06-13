@@ -209,16 +209,21 @@ $(document).ready(function() {
            $('.form-control').val('');
         }
     
-        if ($('.form-control').val === " ") {
+//trying to stop an empty input but didn't work out..
+
+      if ($('.form-control').val.length < 1) { 
         e.preventDefault();
         alert("Please enter an item")
-      }
+        } 
+        
+    
 });
 
   $('ul').on('click', 'li', function () {
     $(this).addClass('clickedItem');
     $(this).appendTo('ul.completedList');
 
+//attempting to allow moving from completed list back to the to-do list
       if ($('ul').hasClass('clickedItem')) {
       $(this).removeClass('clickedItem');
       $(this).appendTo('ul.firstList');
@@ -230,6 +235,7 @@ $(document).ready(function() {
     $(this).remove();
   })
   
+//can sort things top to bottom, but still buggy
   $(function(){
     $('.sortable').sortable();
     $('.sortable').sortable();
